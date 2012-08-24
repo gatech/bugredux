@@ -1,0 +1,8 @@
+Error: memory error: out of bound pointer
+Stack: 
+	#0 00001289 in __user_main (argc=8, argv=169973288)
+	#1 00002805 in main (=8, =169973288)
+Info: 
+	address: 16
+	next: object at 15913824 of size 768
+		MO32[768] (no allocation info)

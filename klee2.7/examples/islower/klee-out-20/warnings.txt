@@ -1,0 +1,2 @@
+KLEE: ERROR: /home/wei/Documents/code/klee2.7/klee/examples/islower/islower.c:9: failed external call: assert
+KLEE: NOTE: now ignoring this error at this location

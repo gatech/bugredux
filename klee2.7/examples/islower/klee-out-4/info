@@ -1,0 +1,18 @@
+../../../klee/Release/bin/klee --write-paths --optimize --libc=uclibc --posix-runtime --init-env ./islower.bc --sym-args 1 1 2
+PID: 10736
+Started: 2010-09-22 21:59:14
+BEGIN searcher description
+DFSSearcher
+END searcher description
+Finished: 2010-09-22 21:59:14
+Elapsed: 00:00:00
+KLEE: done: explored paths = 2
+KLEE: done: avg. constructs per query = 18
+KLEE: done: total queries = 6
+KLEE: done: valid queries = 0
+KLEE: done: invalid queries = 6
+KLEE: done: query cex = 6
+
+KLEE: done: total instructions = 5824
+KLEE: done: completed paths = 2
+KLEE: done: generated tests = 2

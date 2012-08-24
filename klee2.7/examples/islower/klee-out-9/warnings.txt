@@ -1,0 +1,2 @@
+KLEE: ERROR: memory error: out of bound pointer
+KLEE: NOTE: now ignoring this error at this location

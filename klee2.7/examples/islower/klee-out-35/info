@@ -1,0 +1,3 @@
+/home/wei/Documents/code/klee2.7/klee/Release/bin/klee --use-call-seq-replay --optimize --libc=uclibc --posix-runtime --init-env ./islower.bc A --sym-files 1 2
+PID: 3629
+Started: 2010-10-04 17:36:46

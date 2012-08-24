@@ -1,0 +1,3 @@
+../../../klee/Release/bin/klee --write-paths --use-shortest-path --optimize --libc=uclibc --posix-runtime --init-env ./islower.bc A --sym-files 1 10
+PID: 11407
+Started: 2010-09-22 22:46:19

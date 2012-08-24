@@ -1,0 +1,6 @@
+Error: failed external call: assert
+File: /home/wei/Documents/code/klee2.7/klee/examples/islower/islower.c
+Line: 11
+Stack: 
+	#0 00001607 in __user_main (argc=5, argv=169771696) at /home/wei/Documents/code/klee2.7/klee/examples/islower/islower.c:11
+	#1 00002814 in main (=5, =169771696)

@@ -1,0 +1,18 @@
+../../../klee/Release/bin/klee --write-paths --use-shortest-path --optimize --libc=uclibc --posix-runtime --init-env ./islower.bc A --sym-files 1 10
+PID: 11846
+Started: 2010-09-22 22:53:03
+BEGIN searcher description
+ShortestSearcher
+END searcher description
+Finished: 2010-09-22 22:53:04
+Elapsed: 00:00:01
+KLEE: done: explored paths = 3
+KLEE: done: avg. constructs per query = 56
+KLEE: done: total queries = 43
+KLEE: done: valid queries = 2
+KLEE: done: invalid queries = 41
+KLEE: done: query cex = 43
+
+KLEE: done: total instructions = 7537
+KLEE: done: completed paths = 2
+KLEE: done: generated tests = 2

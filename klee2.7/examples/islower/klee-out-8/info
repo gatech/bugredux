@@ -1,0 +1,18 @@
+../../../klee/Release/bin/klee --write-paths --use-random-path --optimize --libc=uclibc --posix-runtime --init-env ./islower.bc A --sym-files 1 10
+PID: 10807
+Started: 2010-09-22 22:02:30
+BEGIN searcher description
+RandomPathSearcher
+END searcher description
+Finished: 2010-09-22 22:02:31
+Elapsed: 00:00:01
+KLEE: done: explored paths = 4
+KLEE: done: avg. constructs per query = 77
+KLEE: done: total queries = 45
+KLEE: done: valid queries = 2
+KLEE: done: invalid queries = 43
+KLEE: done: query cex = 45
+
+KLEE: done: total instructions = 7811
+KLEE: done: completed paths = 4
+KLEE: done: generated tests = 4

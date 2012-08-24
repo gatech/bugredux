@@ -1,0 +1,3 @@
+KLEE: WARNING: undefined reference to function: fwrite
+KLEE: WARNING: undefined reference to function: klee_get_valuel
+KLEE: WARNING: executable has module level assembly (ignoring)

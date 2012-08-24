@@ -1,0 +1,6 @@
+KLEE: WARNING: undefined reference to function: assert
+KLEE: WARNING: undefined reference to function: fwrite
+KLEE: WARNING: undefined reference to function: klee_get_valuel
+KLEE: WARNING: executable has module level assembly (ignoring)
+KLEE: WARNING: calling external: syscall(54, 0, 21505, 163361696)
+KLEE: WARNING: calling external: assert(0)

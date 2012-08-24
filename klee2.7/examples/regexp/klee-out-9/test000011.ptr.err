@@ -1,0 +1,19 @@
+Error: memory error: out of bound pointer
+File: /home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c
+Line: 25
+Stack: 
+	#0 00000091 in matchhere (re=152353006, text=152075333) at /home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:25
+	#1 00000024 in matchstar (c, re=152353006, text=152075333) at /home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:16
+	#2 00000103 in matchhere (re=152353004, text=152075333) at /home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:26
+	#3 00000024 in matchstar (c, re=152353004, text=152075333) at /home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:16
+	#4 00000103 in matchhere (re=152353002, text=152075333) at /home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:26
+	#5 00000155 in matchhere (re=152353001, text=152075332) at /home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:30
+	#6 00000155 in matchhere (re=152353000, text=152075331) at /home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:30
+	#7 00000196 in match (re=152353000, text=152075328) at /home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:38
+	#8 00000237 in main () at /home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:60
+Info: 
+	address: 152353007
+	next: object at 152364488 of size 3
+		MO7[3] allocated at global:.str
+	prev: object at 152353000 of size 7
+		MO11[7] allocated at main():  %re = alloca [7 x i8]                           ; <[7 x i8]*> [#uses=3]

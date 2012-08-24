@@ -1,0 +1,4 @@
+KLEE: ERROR: /home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:23: memory error: out of bound pointer
+KLEE: NOTE: now ignoring this error at this location
+KLEE: ERROR: /home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:25: memory error: out of bound pointer
+KLEE: NOTE: now ignoring this error at this location

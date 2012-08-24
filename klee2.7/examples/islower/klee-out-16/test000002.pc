@@ -1,0 +1,22 @@
+array arr4[96] : w32 -> w8 = symbolic
+array arr2[96] : w32 -> w8 = symbolic
+array arr5[4] : w32 -> w8 = symbolic
+(query [(Eq false
+            (Eq 0
+                (And w64 (ReadLSB w64 88 arr2)
+                         2147483647)))
+        (Ult (ReadLSB w32 52 arr2)
+             65536)
+        (Eq false
+            (Eq 0
+                (And w64 (ReadLSB w64 88 arr4)
+                         2147483647)))
+        (Ult (ReadLSB w32 52 arr4)
+             65536)
+        (Eq 1
+            (ReadLSB w32 0 arr5))
+        (Eq 8192
+            (And w32 (And w32 (ReadLSB w32 16 arr2)
+                              4294966784)
+                     61440))]
+       false)

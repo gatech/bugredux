@@ -1,0 +1,5 @@
+KLEE: WARNING: undefined reference to function: fwrite
+KLEE: WARNING: undefined reference to function: klee_get_valuel
+KLEE: WARNING: executable has module level assembly (ignoring)
+KLEE: WARNING: calling external: syscall(54, 0, 21505, 174127280)
+KLEE: WARNING: ioctl: (TCGETS) symbolic file, incomplete model

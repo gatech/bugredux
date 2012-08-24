@@ -1,0 +1,2523 @@
+KLEE: output directory = "klee-out-7"
+WARNING: Linking two modules of different target triples!
+WARNING: Linking two modules of different target triples!
+WARNING: Linking two modules of different target triples!
+found/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:59
+entry
+  %1 = call i32 @match(i8* %re2, i8* getelementptr inbounds ([6 x i8]* @.str1, i32 0, i32 0)) nounwind, !dbg !7 ; <i32> [#uses=0]
+found/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:38
+bb1
+  %11 = call i32 @matchhere(i8* %9, i8* %10) nounwind, !dbg !10 ; <i32> [#uses=1]
+found/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:30
+bb9
+  %45 = call i32 @matchhere(i8* %44, i8* %42) nounwind, !dbg !15 ; <i32> [#uses=1]
+found/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:26
+bb2
+  %16 = call i32 @matchstar(i32 %14, i8* %10, i8* %15) nounwind, !dbg !11 ; <i32> [#uses=1]
+found/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:16
+bb
+  %3 = call i32 @matchhere(i8* %1, i8* %2) nounwind, !dbg !8 ; <i32> [#uses=1]
+found/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:26
+bb2
+  %16 = call i32 @matchstar(i32 %14, i8* %10, i8* %15) nounwind, !dbg !11 ; <i32> [#uses=1]
+found/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:16
+bb
+  %3 = call i32 @matchhere(i8* %1, i8* %2) nounwind, !dbg !8 ; <i32> [#uses=1]
+found/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:26
+bb2
+  %16 = call i32 @matchstar(i32 %14, i8* %10, i8* %15) nounwind, !dbg !11 ; <i32> [#uses=1]
+found/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:16
+bb
+  %3 = call i32 @matchhere(i8* %1, i8* %2) nounwind, !dbg !8 ; <i32> [#uses=1]
+found/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:23
+entry
+  %re_addr = alloca i8*                           ; <i8**> [#uses=9]
+/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:59
+reach here picking state?? 0
+56 stack size1dis 0
+picked 56 stack size1
+/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:38
+reach here picking state?? 1
+56 stack size1dis 2
+picked 56 stack size1
+reach here picking state?? 1
+56 stack size1dis 2
+picked 56 stack size1
+reach here picking state?? 1
+56 stack size1dis 2
+picked 56 stack size1
+reach here picking state?? 1
+56 stack size1dis 2
+picked 56 stack size1
+reach here picking state?? 1
+56 stack size1dis 2
+picked 56 stack size1
+reach here picking state?? 1
+59 stack size1dis 2
+picked 59 stack size1
+reach here picking state?? 1
+59 stack size1dis 2
+picked 59 stack size1
+reach here picking state?? 1
+35 stack size2dis 1
+59
+picked 35 stack size2
+reach here picking state?? 1
+35 stack size2dis 1
+59
+picked 35 stack size2
+reach here picking state?? 1
+35 stack size2dis 1
+59
+picked 35 stack size2
+reach here picking state?? 1
+35 stack size2dis 1
+59
+picked 35 stack size2
+reach here picking state?? 1
+35 stack size2dis 1
+59
+picked 35 stack size2
+reach here picking state?? 1
+35 stack size2dis 1
+59
+picked 35 stack size2
+reach here picking state?? 1
+35 stack size2dis 1
+59
+picked 35 stack size2
+reach here picking state?? 1
+35 stack size2dis 1
+59
+picked 35 stack size2
+reach here picking state?? 1
+35 stack size2dis 1
+59
+picked 35 stack size2
+reach here picking state?? 1
+35 stack size2dis 1
+59
+picked 35 stack size2
+reach here picking state?? 1
+35 stack size2dis 1
+59
+picked 35 stack size2
+reach here picking state?? 1
+35 stack size2dis 1
+59
+picked 35 stack size2
+reach here picking state?? 1
+36 stack size2dis 10000000
+38 stack size2dis 0
+59
+picked 38 stack size2
+/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:30
+reach here picking state?? 2
+36 stack size2dis 6
+59
+38 stack size2dis 6
+59
+picked 38 stack size2
+reach here picking state?? 2
+36 stack size2dis 6
+59
+38 stack size2dis 6
+59
+picked 38 stack size2
+reach here picking state?? 2
+36 stack size2dis 6
+59
+23 stack size3dis 5
+59
+38
+picked 23 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+23 stack size3dis 5
+59
+38
+picked 23 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+23 stack size3dis 5
+59
+38
+picked 23 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+23 stack size3dis 5
+59
+38
+picked 23 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+23 stack size3dis 5
+59
+38
+picked 23 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+23 stack size3dis 5
+59
+38
+picked 23 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+23 stack size3dis 5
+59
+38
+picked 23 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+23 stack size3dis 5
+59
+38
+picked 23 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+23 stack size3dis 5
+59
+38
+picked 23 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+23 stack size3dis 5
+59
+38
+picked 23 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+23 stack size3dis 5
+59
+38
+picked 23 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+23 stack size3dis 5
+59
+38
+picked 23 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+25 stack size3dis 4
+59
+38
+picked 25 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+25 stack size3dis 4
+59
+38
+picked 25 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+25 stack size3dis 4
+59
+38
+picked 25 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+25 stack size3dis 4
+59
+38
+picked 25 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 4
+59
+38
+picked 26 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+25 stack size3dis 4
+59
+38
+picked 25 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 8
+59
+38
+27 stack size3dis 3
+59
+38
+picked 27 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 8
+59
+38
+27 stack size3dis 3
+59
+38
+picked 27 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 8
+59
+38
+27 stack size3dis 3
+59
+38
+picked 27 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 8
+59
+38
+27 stack size3dis 3
+59
+38
+picked 27 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 8
+59
+38
+27 stack size3dis 3
+59
+38
+29 stack size3dis 2
+59
+38
+picked 29 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 8
+59
+38
+27 stack size3dis 3
+59
+38
+29 stack size3dis 2
+59
+38
+picked 29 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 8
+59
+38
+27 stack size3dis 3
+59
+38
+29 stack size3dis 2
+59
+38
+picked 29 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 8
+59
+38
+27 stack size3dis 3
+59
+38
+29 stack size3dis 2
+59
+38
+picked 29 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 8
+59
+38
+27 stack size3dis 3
+59
+38
+29 stack size3dis 1
+59
+38
+picked 29 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 8
+59
+38
+27 stack size3dis 3
+59
+38
+29 stack size3dis 1
+59
+38
+picked 29 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 8
+59
+38
+27 stack size3dis 3
+59
+38
+29 stack size3dis 1
+59
+38
+picked 29 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 8
+59
+38
+27 stack size3dis 3
+59
+38
+29 stack size3dis 1
+59
+38
+picked 29 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 8
+59
+38
+27 stack size3dis 3
+59
+38
+29 stack size3dis 1
+59
+38
+picked 29 stack size3
+reach here picking state?? 2
+36 stack size2dis 6
+59
+24 stack size3dis 10000000
+26 stack size3dis 8
+59
+38
+27 stack size3dis 3
+59
+38
+30 stack size3dis 0
+59
+38
+29 stack size3dis 1
+picked 30 stack size3
+/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:26
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+30 stack size3dis 3
+59
+38
+29 stack size3dis 4
+picked 30 stack size3
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+30 stack size3dis 3
+59
+38
+29 stack size3dis 4
+picked 30 stack size3
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+30 stack size3dis 3
+59
+38
+29 stack size3dis 4
+picked 30 stack size3
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+30 stack size3dis 3
+59
+38
+29 stack size3dis 4
+picked 30 stack size3
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+23 stack size4dis 2
+59
+38
+30
+29 stack size3dis 4
+picked 23 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+23 stack size4dis 2
+59
+38
+30
+29 stack size3dis 4
+picked 23 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+23 stack size4dis 2
+59
+38
+30
+29 stack size3dis 4
+picked 23 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+23 stack size4dis 2
+59
+38
+30
+29 stack size3dis 4
+picked 23 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+23 stack size4dis 2
+59
+38
+30
+29 stack size3dis 4
+picked 23 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+23 stack size4dis 2
+59
+38
+30
+29 stack size3dis 4
+picked 23 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+23 stack size4dis 2
+59
+38
+30
+29 stack size3dis 4
+picked 23 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+23 stack size4dis 2
+59
+38
+30
+29 stack size3dis 4
+picked 23 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+23 stack size4dis 2
+59
+38
+30
+29 stack size3dis 4
+picked 23 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+23 stack size4dis 2
+59
+38
+30
+29 stack size3dis 4
+picked 23 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+23 stack size4dis 2
+59
+38
+30
+29 stack size3dis 4
+picked 23 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+23 stack size4dis 2
+59
+38
+30
+29 stack size3dis 4
+picked 23 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+24 stack size4dis 10000000
+29 stack size3dis 4
+59
+38
+25 stack size4dis 1
+59
+38
+30
+picked 25 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+24 stack size4dis 10000000
+29 stack size3dis 4
+59
+38
+25 stack size4dis 1
+59
+38
+30
+picked 25 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+24 stack size4dis 10000000
+29 stack size3dis 4
+59
+38
+25 stack size4dis 1
+59
+38
+30
+picked 25 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+24 stack size4dis 10000000
+29 stack size3dis 4
+59
+38
+25 stack size4dis 1
+59
+38
+30
+picked 25 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+24 stack size4dis 10000000
+29 stack size3dis 4
+59
+38
+26 stack size4dis 1
+59
+38
+30
+picked 26 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+24 stack size4dis 10000000
+29 stack size3dis 4
+59
+38
+25 stack size4dis 1
+59
+38
+30
+picked 25 stack size4
+reach here picking state?? 3
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+59
+38
+27 stack size3dis 6
+59
+38
+24 stack size4dis 10000000
+29 stack size3dis 4
+59
+38
+26 stack size4dis 0
+59
+38
+30
+27 stack size4dis 6
+picked 26 stack size4
+/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:16
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+26 stack size4dis 2
+59
+38
+30
+27 stack size4dis 8
+picked 26 stack size4
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+26 stack size4dis 2
+59
+38
+30
+27 stack size4dis 8
+picked 26 stack size4
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+26 stack size4dis 2
+59
+38
+30
+27 stack size4dis 8
+picked 26 stack size4
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+26 stack size4dis 2
+59
+38
+30
+27 stack size4dis 8
+picked 26 stack size4
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+26 stack size4dis 2
+59
+38
+30
+27 stack size4dis 8
+picked 26 stack size4
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+26 stack size4dis 2
+59
+38
+30
+27 stack size4dis 8
+picked 26 stack size4
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+14 stack size5dis 1
+59
+38
+30
+26
+27 stack size4dis 8
+picked 14 stack size5
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+14 stack size5dis 1
+59
+38
+30
+26
+27 stack size4dis 8
+picked 14 stack size5
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+14 stack size5dis 1
+59
+38
+30
+26
+27 stack size4dis 8
+picked 14 stack size5
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+14 stack size5dis 1
+59
+38
+30
+26
+27 stack size4dis 8
+picked 14 stack size5
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+14 stack size5dis 1
+59
+38
+30
+26
+27 stack size4dis 8
+picked 14 stack size5
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+14 stack size5dis 1
+59
+38
+30
+26
+27 stack size4dis 8
+picked 14 stack size5
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+14 stack size5dis 1
+59
+38
+30
+26
+27 stack size4dis 8
+picked 14 stack size5
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+14 stack size5dis 1
+59
+38
+30
+26
+27 stack size4dis 8
+picked 14 stack size5
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+14 stack size5dis 1
+59
+38
+30
+26
+27 stack size4dis 8
+picked 14 stack size5
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+14 stack size5dis 1
+59
+38
+30
+26
+27 stack size4dis 8
+picked 14 stack size5
+reach here picking state?? 4
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+16 stack size5dis 0
+59
+38
+30
+26
+27 stack size4dis 8
+picked 16 stack size5
+/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:26
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+16 stack size5dis 3
+59
+38
+30
+26
+27 stack size4dis 6
+picked 16 stack size5
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+16 stack size5dis 3
+59
+38
+30
+26
+27 stack size4dis 6
+picked 16 stack size5
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+23 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size4dis 6
+picked 23 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+23 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size4dis 6
+picked 23 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+23 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size4dis 6
+picked 23 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+23 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size4dis 6
+picked 23 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+23 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size4dis 6
+picked 23 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+23 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size4dis 6
+picked 23 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+23 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size4dis 6
+picked 23 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+23 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size4dis 6
+picked 23 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+23 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size4dis 6
+picked 23 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+23 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size4dis 6
+picked 23 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+23 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size4dis 6
+picked 23 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+23 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size4dis 6
+picked 23 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+25 stack size6dis 1
+59
+38
+30
+26
+16
+picked 25 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+25 stack size6dis 1
+59
+38
+30
+26
+16
+picked 25 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+25 stack size6dis 1
+59
+38
+30
+26
+16
+picked 25 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+25 stack size6dis 1
+59
+38
+30
+26
+16
+picked 25 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+26 stack size6dis 1
+59
+38
+30
+26
+16
+picked 26 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+25 stack size6dis 1
+59
+38
+30
+26
+16
+picked 25 stack size6
+reach here picking state?? 5
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+26 stack size6dis 0
+59
+38
+30
+26
+16
+27 stack size6dis 6
+picked 26 stack size6
+/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:16
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+26 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size6dis 8
+picked 26 stack size6
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+26 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size6dis 8
+picked 26 stack size6
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+26 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size6dis 8
+picked 26 stack size6
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+26 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size6dis 8
+picked 26 stack size6
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+26 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size6dis 8
+picked 26 stack size6
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+26 stack size6dis 2
+59
+38
+30
+26
+16
+27 stack size6dis 8
+picked 26 stack size6
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+14 stack size7dis 1
+59
+38
+30
+26
+16
+26
+27 stack size6dis 8
+picked 14 stack size7
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+14 stack size7dis 1
+59
+38
+30
+26
+16
+26
+27 stack size6dis 8
+picked 14 stack size7
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+14 stack size7dis 1
+59
+38
+30
+26
+16
+26
+27 stack size6dis 8
+picked 14 stack size7
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+14 stack size7dis 1
+59
+38
+30
+26
+16
+26
+27 stack size6dis 8
+picked 14 stack size7
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+14 stack size7dis 1
+59
+38
+30
+26
+16
+26
+27 stack size6dis 8
+picked 14 stack size7
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+14 stack size7dis 1
+59
+38
+30
+26
+16
+26
+27 stack size6dis 8
+picked 14 stack size7
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+14 stack size7dis 1
+59
+38
+30
+26
+16
+26
+27 stack size6dis 8
+picked 14 stack size7
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+14 stack size7dis 1
+59
+38
+30
+26
+16
+26
+27 stack size6dis 8
+picked 14 stack size7
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+14 stack size7dis 1
+59
+38
+30
+26
+16
+26
+27 stack size6dis 8
+picked 14 stack size7
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+14 stack size7dis 1
+59
+38
+30
+26
+16
+26
+27 stack size6dis 8
+picked 14 stack size7
+reach here picking state?? 6
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+16 stack size7dis 0
+59
+38
+30
+26
+16
+26
+27 stack size6dis 8
+picked 16 stack size7
+/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:26
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+16 stack size7dis 3
+59
+38
+30
+26
+16
+26
+27 stack size6dis 6
+picked 16 stack size7
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+16 stack size7dis 3
+59
+38
+30
+26
+16
+26
+27 stack size6dis 6
+picked 16 stack size7
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+23 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size6dis 6
+picked 23 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+23 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size6dis 6
+picked 23 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+23 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size6dis 6
+picked 23 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+23 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size6dis 6
+picked 23 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+23 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size6dis 6
+picked 23 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+23 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size6dis 6
+picked 23 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+23 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size6dis 6
+picked 23 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+23 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size6dis 6
+picked 23 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+23 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size6dis 6
+picked 23 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+23 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size6dis 6
+picked 23 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+23 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size6dis 6
+picked 23 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+23 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size6dis 6
+picked 23 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+24 stack size8dis 10000000
+27 stack size6dis 6
+25 stack size8dis 1
+59
+38
+30
+26
+16
+26
+16
+picked 25 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+24 stack size8dis 10000000
+27 stack size6dis 6
+25 stack size8dis 1
+59
+38
+30
+26
+16
+26
+16
+picked 25 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+24 stack size8dis 10000000
+27 stack size6dis 6
+25 stack size8dis 1
+59
+38
+30
+26
+16
+26
+16
+picked 25 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+24 stack size8dis 10000000
+27 stack size6dis 6
+25 stack size8dis 1
+59
+38
+30
+26
+16
+26
+16
+picked 25 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+24 stack size8dis 10000000
+27 stack size6dis 6
+26 stack size8dis 1
+59
+38
+30
+26
+16
+26
+16
+picked 26 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+24 stack size8dis 10000000
+27 stack size6dis 6
+25 stack size8dis 1
+59
+38
+30
+26
+16
+26
+16
+picked 25 stack size8
+reach here picking state?? 7
+36 stack size2dis 3
+24 stack size3dis 10000000
+26 stack size3dis 0
+27 stack size3dis 6
+24 stack size4dis 10000000
+29 stack size3dis 4
+24 stack size6dis 10000000
+27 stack size4dis 6
+24 stack size8dis 10000000
+27 stack size6dis 6
+26 stack size8dis 0
+59
+38
+30
+26
+16
+26
+16
+27 stack size8dis 6
+picked 26 stack size8
+/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:16
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+26 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size8dis 8
+picked 26 stack size8
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+26 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size8dis 8
+picked 26 stack size8
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+26 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size8dis 8
+picked 26 stack size8
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+26 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size8dis 8
+picked 26 stack size8
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+26 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size8dis 8
+picked 26 stack size8
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+26 stack size8dis 2
+59
+38
+30
+26
+16
+26
+16
+27 stack size8dis 8
+picked 26 stack size8
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+14 stack size9dis 1
+59
+38
+30
+26
+16
+26
+16
+26
+27 stack size8dis 8
+picked 14 stack size9
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+14 stack size9dis 1
+59
+38
+30
+26
+16
+26
+16
+26
+27 stack size8dis 8
+picked 14 stack size9
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+14 stack size9dis 1
+59
+38
+30
+26
+16
+26
+16
+26
+27 stack size8dis 8
+picked 14 stack size9
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+14 stack size9dis 1
+59
+38
+30
+26
+16
+26
+16
+26
+27 stack size8dis 8
+picked 14 stack size9
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+14 stack size9dis 1
+59
+38
+30
+26
+16
+26
+16
+26
+27 stack size8dis 8
+picked 14 stack size9
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+14 stack size9dis 1
+59
+38
+30
+26
+16
+26
+16
+26
+27 stack size8dis 8
+picked 14 stack size9
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+14 stack size9dis 1
+59
+38
+30
+26
+16
+26
+16
+26
+27 stack size8dis 8
+picked 14 stack size9
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+14 stack size9dis 1
+59
+38
+30
+26
+16
+26
+16
+26
+27 stack size8dis 8
+picked 14 stack size9
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+14 stack size9dis 1
+59
+38
+30
+26
+16
+26
+16
+26
+27 stack size8dis 8
+picked 14 stack size9
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+14 stack size9dis 1
+59
+38
+30
+26
+16
+26
+16
+26
+27 stack size8dis 8
+picked 14 stack size9
+reach here picking state?? 8
+36 stack size2dis 5
+24 stack size3dis 10000000
+26 stack size3dis 2
+27 stack size3dis 8
+24 stack size4dis 10000000
+29 stack size3dis 6
+24 stack size6dis 10000000
+27 stack size4dis 8
+24 stack size8dis 10000000
+27 stack size6dis 8
+16 stack size9dis 0
+59
+38
+30
+26
+16
+26
+16
+26
+27 stack size8dis 8
+picked 16 stack size9
+/home/wei/Documents/code/klee2.7/klee/examples/regexp/Regexp.c:23
+reach here picking state?? 9
+36 stack size2dis 1
+24 stack size3dis 10000000
+26 stack size3dis 3
+27 stack size3dis 4
+24 stack size4dis 10000000
+29 stack size3dis 2
+24 stack size6dis 10000000
+27 stack size4dis 4
+24 stack size8dis 10000000
+27 stack size6dis 4
+16 stack size9dis 1
+59
+38
+30
+26
+16
+26
+16
+26
+27 stack size8dis 4
+picked 16 stack size9
+reach here picking state?? 9
+36 stack size2dis 1
+24 stack size3dis 10000000
+26 stack size3dis 3
+27 stack size3dis 4
+24 stack size4dis 10000000
+29 stack size3dis 2
+24 stack size6dis 10000000
+27 stack size4dis 4
+24 stack size8dis 10000000
+27 stack size6dis 4
+16 stack size9dis 1
+59
+38
+30
+26
+16
+26
+16
+26
+27 stack size8dis 4
+picked 16 stack size9
+reach here picking state?? 9
+36 stack size2dis 1
+24 stack size3dis 10000000
+26 stack size3dis 3
+27 stack size3dis 4
+24 stack size4dis 10000000
+29 stack size3dis 2
+24 stack size6dis 10000000
+27 stack size4dis 4
+24 stack size8dis 10000000
+27 stack size6dis 4
+23 stack size10dis 0
+59
+38
+30
+26
+16
+26
+16
+26
+16
+27 stack size8dis 4
+picked 23 stack size10
+
+reach here picking state?? 10
+36 stack size2dis 10000000
+24 stack size3dis 10000000
+26 stack size3dis 10000000
+27 stack size3dis 10000000
+24 stack size4dis 10000000
+29 stack size3dis 10000000
+24 stack size6dis 10000000
+27 stack size4dis 10000000
+24 stack size8dis 10000000
+27 stack size6dis 10000000
+23 stack size10dis 10000000
+27 stack size8dis 10000000
+min Dis is infinity
+KLEE: halting execution, dumping remaining states
+0  klee 0x088d7678

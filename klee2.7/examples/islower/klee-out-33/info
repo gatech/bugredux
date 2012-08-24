@@ -1,0 +1,18 @@
+/home/wei/Documents/code/klee2.7/klee/Release/bin/klee --use-call-seq-replay --optimize --libc=uclibc --posix-runtime --init-env ./islower.bc A --sym-files 1 2
+PID: 27736
+Started: 2010-10-02 12:45:23
+BEGIN searcher description
+ShortestSearcher
+END searcher description
+Finished: 2010-10-02 12:45:24
+Elapsed: 00:00:01
+KLEE: done: explored paths = 1
+KLEE: done: avg. constructs per query = 41
+KLEE: done: total queries = 34
+KLEE: done: valid queries = 0
+KLEE: done: invalid queries = 34
+KLEE: done: query cex = 34
+
+KLEE: done: total instructions = 6331
+KLEE: done: completed paths = 1
+KLEE: done: generated tests = 1

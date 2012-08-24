@@ -1,0 +1,3 @@
+/home/wei/Documents/code/klee2.7/klee/Release/bin/klee --use-path-replay --use-path-replay-executor --optimize --libc=uclibc --posix-runtime --init-env ./islower.bc A --sym-files 1 1
+PID: 22716
+Started: 2010-10-01 14:54:03

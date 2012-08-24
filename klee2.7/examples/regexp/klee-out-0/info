@@ -1,0 +1,18 @@
+../../Release/bin/klee -use-shortest-path Regexp.o
+PID: 9527
+Started: 2010-08-27 15:16:20
+BEGIN searcher description
+ShortestSearcher
+END searcher description
+Finished: 2010-08-27 15:16:20
+Elapsed: 00:00:00
+KLEE: done: explored paths = 12
+KLEE: done: avg. constructs per query = 10
+KLEE: done: total queries = 13
+KLEE: done: valid queries = 0
+KLEE: done: invalid queries = 13
+KLEE: done: query cex = 13
+
+KLEE: done: total instructions = 174
+KLEE: done: completed paths = 1
+KLEE: done: generated tests = 1

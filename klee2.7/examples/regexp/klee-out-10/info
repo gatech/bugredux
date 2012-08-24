@@ -1,0 +1,19 @@
+/home/wei/Documents/code/klee2.7/klee/Release/bin/klee --only-output-states-covering-new Regexp.o
+PID: 17476
+Started: 2011-09-22 17:21:12
+BEGIN searcher description
+DFSSearcher
+END searcher description
+Finished: 2011-09-22 17:21:23
+Elapsed: 00:00:11
+Elapsed Double: 11470000
+KLEE: done: explored paths = 6012
+KLEE: done: avg. constructs per query = 22
+KLEE: done: total queries = 110
+KLEE: done: valid queries = 0
+KLEE: done: invalid queries = 110
+KLEE: done: query cex = 110
+
+KLEE: done: total instructions = 4451136
+KLEE: done: completed paths = 6012
+KLEE: done: generated tests = 20

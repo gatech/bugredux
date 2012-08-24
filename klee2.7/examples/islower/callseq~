@@ -1,0 +1,10 @@
+/home/wei/Documents/code/klee2.7/klee/examples/islower/islower.c:23@open
+/home/wei/Documents/code/klee2.7/klee/examples/islower/islower.c:23@read
+/home/wei/Documents/code/klee2.7/klee/examples/islower/islower.c:9@assert
+KLEE: WARNING: calling external: assert(0)
+KLEE: ERROR: /home/wei/Documents/code/klee2.7/klee/examples/islower/islower.c:9: failed external call: assert
+KLEE: NOTE: now ignoring this error at this location
+
+KLEE: done: total instructions = 6330
+KLEE: done: completed paths = 1
+KLEE: done: generated tests = 1

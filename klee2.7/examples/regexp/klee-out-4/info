@@ -1,0 +1,3 @@
+../../Release/bin/klee --use-shortest-path Regexp.o
+PID: 7444
+Started: 2010-08-31 14:58:24
