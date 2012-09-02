@@ -220,7 +220,6 @@ namespace klee {
 
 	    void generateFuncShort();
 	    void generateNewShortDistance();
-	    void generateChangeDis();
 	    void findNextTarget();
 	    KInstruction* findInstFromSourceLine(std::string sourceline);
 
@@ -233,6 +232,31 @@ namespace klee {
 	    void printName(std::ostream &os) {
 	      os << "GeneralReplaySearcher\n";
 	    }
+  };
+
+  // replay call sequences in symbolic execution
+  class CallSeqReplaySearcher : public GeneralReplaySearcher {
+
+
+  public:
+	CallSeqReplaySearcher(Executor &executor);
+	    ~CallSeqReplaySearcher();
+
+//	    void generateFuncShort();
+	    void generateNewShortDistance();
+	    void findNextTarget();
+//	    KInstruction* findInstFromSourceLine(std::string sourceline);
+
+
+	  ExecutionState &selectState();
+//	    void update(ExecutionState *current,
+//	                const std::set<ExecutionState*> &addedStates,
+//	                const std::set<ExecutionState*> &removedStates);
+	    bool empty() { return states.empty(); }
+	    void printName(std::ostream &os) {
+	      os << "CallSeqReplaySearcher\n";
+	    }
+
   };
 
   // replay path in symbolic execution
@@ -294,65 +318,7 @@ namespace klee {
 	    }
   };
 
-  // replay call sequences in symbolic execution
-  class CallSeqReplaySearcher : public Searcher {
-	  Executor &executor;
-	  std::vector<ExecutionState*> states;
-	  std::vector<std::string> callSeq;
-	  unsigned callSeqPtr;
-	  bool getToUserMain;
 
-	  std::string sourceFile;
-	  bool getTarget;
-	std::map<llvm::Function*,int> funcShortMap;
-	std::vector<KInstruction*> targetInstList;
-	//llvm::BasicBlock* curTargetBB;//, lastTargetBB;
-	std::map<llvm::Instruction*, int> curDistanceMap;
-
-	std::map<llvm::Instruction*, int> curInsideFuncDisMap;
-	std::vector<KFunction*> functions;
-	std::map<ExecutionState*, int> stateStepMap;
-
-	std::map<llvm::Function*, std::vector<llvm::Instruction*>* > cachedCallSite;
-
-	void CleanCachedCallSites();
-
-	  std::set<llvm::BasicBlock*> prunedBBSet;
-	  std::set<llvm::Function*> unvisitedFunc;
-
-
-
-
-	//temp added for midway change target to accelerate search
-//	std::map<llvm::Instruction*, int> changeTargetDisMap;
-//	std::map<ExecutionState*, int> changeTargetReachFlag;
-//	llvm::Instruction* changeTargetInst;
-//	std::string changeTargetSource;
-	  int lastChoiceNumber;//remember last choice so that do not need to pick state
-	  ExecutionState *lastChoice;
-
-
-  public:
-	CallSeqReplaySearcher(Executor &executor);
-	    ~CallSeqReplaySearcher();
-
-	    void generateFuncShort();
-	    void generateNewShortDistance();
-	    void generateChangeDis();
-	    void findNextTarget();
-	    KInstruction* findInstFromSourceLine(std::string sourceline);
-
-
-	  ExecutionState &selectState();
-	    void update(ExecutionState *current,
-	                const std::set<ExecutionState*> &addedStates,
-	                const std::set<ExecutionState*> &removedStates);
-	    bool empty() { return states.empty(); }
-	    void printName(std::ostream &os) {
-	      os << "CallSeqReplaySearcher\n";
-	    }
-
-  };
 
   struct CommonBranch {
 	  KInstruction* branchinst;
