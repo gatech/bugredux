@@ -101,6 +101,246 @@ void GeneralReplaySearcher::CleanCachedCallSites() {
 
 }
 
+GeneralReplaySearcher::GeneralReplaySearcher(Executor &_executor)
+  : executor(_executor),
+    functions(executor.kmodule->functions){
+	for (unsigned i=0;i<functions.size();i++) {
+		KFunction * kf = functions[i];
+		if (kf->function!=NULL) {
+			funcShortMap[kf->function] = 1;
+		}
+		llvm::Function* curFunc = kf->function;
+		if (curFunc->getBasicBlockList().size()==0)
+			continue;
+		for (Function::iterator I=curFunc->begin(), E=curFunc->end();I!=E;I++) {
+			BasicBlock *BB = I;
+				for (BasicBlock::iterator BI=BB->begin(),BE=BB->end();BI!=BE;BI++) {
+					Instruction* inst = BI;
+					if (isa<CallInst>(inst)) {
+						CallInst* ci = (CallInst*) inst;
+						if (ci->getCalledFunction()!=NULL) {
+							Function *fc = ci->getCalledFunction();
+							if (cachedCallSite.find(fc)==cachedCallSite.end()) {
+								std::vector<llvm::Instruction*>* newvector = new std::vector<llvm::Instruction*>();
+								newvector->push_back(inst);
+								cachedCallSite[fc] = newvector;
+							} else {
+								std::vector<llvm::Instruction*>* oldvector = cachedCallSite[fc];
+								oldvector->push_back(inst);
+							}
+
+						}
+					}
+				}
+		}
+
+	}
+
+}
+
+
+
+void GeneralReplaySearcher::generateFuncShort() {
+
+	int infinity = 10000000;
+	std::set<Function*> exitfuncs;
+	for (unsigned i=0;i<functions.size();i++) {
+		KFunction * kf = functions[i];
+		if (kf->function->getNameStr().compare("__user_main")==0)
+			continue;
+		for (unsigned j=0;j<kf->numInstructions;j++) {
+			KInstruction* ki = kf->instructions[j];
+			if (isa<CallInst>(ki->inst)) {
+				CallInst* callI = (CallInst*)(ki->inst);
+				if (callI->getCalledFunction()!=NULL&&callI->getCalledFunction()->getNameStr().compare("exit")==0) {
+					exitfuncs.insert(kf->function);
+					break;
+				}
+			}
+
+		}
+		llvm::Function* curFunc = kf->function;
+	}
+	// run 5 times to get approximate short dis for func
+		for (int j=0;j<5;j++) {
+			curDistanceMap.clear();
+
+		for (unsigned i=0;i<functions.size();i++) {
+			KFunction * kf = functions[i];
+			llvm::Function* curFunc = kf->function;
+			std::set<Instruction*> q;
+			if (curFunc->getBasicBlockList().size()==0)
+				continue;
+			for (Function::iterator I=curFunc->begin(), E=curFunc->end();I!=E;I++) {
+				BasicBlock *BB = I;
+					for (BasicBlock::iterator BI=BB->begin(),BE=BB->end();BI!=BE;BI++) {
+						Instruction* inst = BI;
+						if (isa<ReturnInst>(inst)) {
+							curDistanceMap[inst] = 1;
+						} else if (isa<CallInst>(inst)){
+							CallInst* callI = (CallInst*)inst;
+							if (callI->getCalledFunction()!=NULL&&callI->getCalledFunction()->getNameStr().compare("exit")==0)
+								curDistanceMap[inst] = 1;
+							else if (callI->getCalledFunction()!=NULL&&exitfuncs.find(callI->getCalledFunction())!=exitfuncs.end())
+								curDistanceMap[inst] = 1;
+							else
+								curDistanceMap[inst] = infinity;
+						}
+						else {
+							curDistanceMap[inst] = infinity;
+						}
+						if (inst->isTerminator()||isa<CallInst>(inst))
+							q.insert(inst);
+					}
+			}
+
+
+
+			while (q.size()>0) {
+				   std::set<Instruction*>::iterator it;
+				   Instruction* minInst = NULL;
+				   int minval = infinity;
+				   for (it = q.begin();it!=q.end();it++) {
+				    	Instruction* ci = *it;
+
+				    	if (curDistanceMap[ci]<minval) {
+							minval = curDistanceMap[ci];
+							minInst = ci;
+				    	}
+				   }
+				   if (minval==infinity) {
+					   q.clear();
+					   break;
+				   }
+				   q.erase(minInst);
+
+				   std::vector<Instruction*> instvec;
+				   for (BasicBlock::iterator BI = minInst->getParent()->begin(),BE = minInst->getParent()->end();BI!=BE;BI++) {
+					   Instruction* binst = BI;
+					   if (binst==minInst)
+						   break;
+					   instvec.push_back(binst);
+				   }
+				   int newDis = infinity;
+
+				   Instruction* cminInst = minInst;
+				   while(instvec.size()>0){
+					   Instruction* backInst = instvec.back();
+					   if (isa<CallInst>(backInst)) {
+
+
+						Function* calledFunc = ((CallInst*)backInst)->getCalledFunction();
+						if (calledFunc==NULL) {
+						  	newDis = curDistanceMap[cminInst]+1;
+						} else {
+							if (unvisitedFunc.find(calledFunc)==unvisitedFunc.end()) {
+						  	if (funcShortMap.find(calledFunc)!=funcShortMap.end())
+						  		newDis = curDistanceMap[cminInst]+1+funcShortMap[calledFunc];
+						  	else
+						  		newDis = curDistanceMap[cminInst]+1;
+							} else
+								newDis = infinity;
+						  	}
+							 if (curDistanceMap[backInst]>newDis) {
+						  		 curDistanceMap[backInst] = newDis;
+						  	 }
+						 }
+					   else {
+						  	//simple case direct pred
+						    newDis = curDistanceMap[cminInst]+1;
+						  	if (curDistanceMap[backInst] > newDis) {
+						  			curDistanceMap[backInst] = newDis;
+						  	}
+
+
+					   }
+					   instvec.pop_back();
+					   cminInst=backInst;
+					   q.erase(backInst);
+				   }
+
+					   //means minInst is the beginning of program
+					   pred_iterator PI = pred_begin(cminInst->getParent()), PE = pred_end(cminInst->getParent());
+					   while(PI!=PE) {
+						   BasicBlock* predBB = (BasicBlock*)(*PI);
+						   if (prunedBBSet.find(predBB)==prunedBBSet.end()) {
+						   TerminatorInst* predterm = predBB->getTerminator();
+						   newDis = curDistanceMap[cminInst]+1;
+						   if (curDistanceMap[predterm]>newDis) {
+							   curDistanceMap[predterm] = newDis;
+						   }
+						   }
+						   PI++;
+					   }
+
+
+				}
+			if (curDistanceMap[curFunc->getEntryBlock().begin()]<infinity) {
+				funcShortMap[curFunc] = curDistanceMap[curFunc->getEntryBlock().begin()];
+			}
+		}
+		}
+
+}
+
+void GeneralReplaySearcher::generateNewShortDistance() {
+}
+
+void GeneralReplaySearcher::findNextTarget() {
+	lastChoice = NULL;
+	lastChoiceNumber = -1;
+
+//	if (callSeqPtr==targetInstList.size()) {
+//		this->curInsideFuncDisMap.clear();
+//		return;
+//	}
+
+	generateNewShortDistance();
+
+	return;
+
+}
+
+GeneralReplaySearcher::~GeneralReplaySearcher() {
+}
+
+
+ExecutionState &GeneralReplaySearcher::selectState() {
+	  return *states.back();
+}
+
+
+void GeneralReplaySearcher::update(ExecutionState *current,
+                         const std::set<ExecutionState*> &addedStates,
+                         const std::set<ExecutionState*> &removedStates) {
+  states.insert(states.end(),
+                addedStates.begin(),
+                addedStates.end());
+  for (std::set<ExecutionState*>::const_iterator it = removedStates.begin(),
+         ie = removedStates.end(); it != ie; ++it) {
+    ExecutionState *es = *it;
+    if (es == states.back()) {
+      states.pop_back();
+    } else {
+      bool ok = false;
+
+      for (std::vector<ExecutionState*>::iterator ait = states.begin(),
+             aie = states.end(); ait != aie; ++ait) {
+        if (es==*ait) {
+          states.erase(ait);
+          ok = true;
+          break;
+        }
+      }
+
+      assert(ok && "invalid state removed");
+    }
+  }
+}
+
+
+// callseq
+
 
 KInstruction* CallSeqReplaySearcher::findInstFromSourceLine(std::string sourceline) {
 	KInstruction* retInst = NULL;
@@ -628,22 +868,7 @@ void CallSeqReplaySearcher::generateNewShortDistance() {
 		   BasicBlock* parentBB = cminInst->getParent();
 		   BasicBlock* entryBB = &(parentBB->getParent()->getEntryBlock());
 
-//		   if (parentBB==entryBB) {
-//		  				   std::vector<llvm::Instruction*>* vec = cachedCallSite[parentBB->getParent()];
-//		  				   if (vec!=NULL) {
-//		  					   for (unsigned i=0;i<vec->size();i++) {
-//		  						   Instruction* calli = vec->at(i);
-//		  						   if ((prunedBBSet.find(calli->getParent())==prunedBBSet.end())&&(unvisitedFunc.find(calli->getParent()->getParent())==unvisitedFunc.end())) {
-//		  						   	 newDis = curInsideFuncDisMap[cminInst]+1;
-//		  						   	 if (curInsideFuncDisMap[calli]>newDis) {
-//		  						   		curInsideFuncDisMap[calli] = newDis;
-//		  						   		modifiedset.insert(calli);
-//		  						   		//std::cerr << "propagate to upper level\n";
-//		  						   	 }
-//		  						   }
-//		  					   }
-//		  				   }
-//		  			   }
+
 
 			   //means minInst is the beginning of program
 			   pred_iterator PI = pred_begin(cminInst->getParent()), PE = pred_end(cminInst->getParent());
@@ -664,48 +889,19 @@ void CallSeqReplaySearcher::generateNewShortDistance() {
 
 		}
 
-//	Function* curFunc = targetInstList[callSeqPtr]->getParent()->getParent();
-//
-//	for (Function::iterator I=curFunc->begin(), E=curFunc->end();I!=E;I++) {
-//		BasicBlock *BB = I;
-//		std::cerr<< BB->getNameStr()<<":\n";
-//			for (BasicBlock::iterator BI=BB->begin(),BE=BB->end();BI!=BE;BI++) {
-//				Instruction* inst = BI;
-//				inst->dump();
-//				std::cerr<<"dis : "<<curInsideFuncDisMap[inst]<<"\n";
-//			}
-//	}
 
 }
 
 
 void CallSeqReplaySearcher::findNextTarget() {
-	//missing: get current target source line
-//	int infinity = 10000000;
 	lastChoice = NULL;
 	lastChoiceNumber = -1;
 
 	if (callSeqPtr==targetInstList.size()) {
 
 		this->curInsideFuncDisMap.clear();
-//		for (unsigned i=0;i<functions.size();i++) {
-//			KFunction * kf = functions[i];
-//			Function* curFunc = kf->function;
-//
-//		for (Function::iterator I=curFunc->begin(), E=curFunc->end();I!=E;I++) {
-//			BasicBlock *BB = I;
-//				pred_iterator PI = pred_begin(BB), PE = pred_end(BB);
-//				if (PI!=PE||BB==&(curFunc->getEntryBlock())) {
-//					//cerr<<"-\t"<<lastBB->getNameStr()<<"\n";
-//					//set to infinity make every bb become can not reach
-//					curDistanceMap[BB] = infinity;
-//				}
-//			}
-//		}
 		return;
 	}
-//	std::string targetSourceLine = callSeq[callSeqPtr];
-//	std::cerr << targetSourceLine <<"\n";
 
 	generateNewShortDistance();
 
