@@ -81,6 +81,8 @@ class Executor : public Interpreter {
   friend class ShortestPathSearcher;
   friend class CallSeqReplaySearcher;
   friend class CallSeqReplayNonStopSearcher;
+  friend class AssertionNonStopSearcher;
+  friend class GeneralReplaySearcher;
   friend class PathReplaySearcher;
   friend class BranchRankingSearcher;
 

@@ -184,9 +184,10 @@ namespace klee {
 
 
   class GeneralReplaySearcher : public Searcher {
-
+  protected:
 	  Executor &executor;
 	  std::vector<ExecutionState*> states;
+
 	  std::vector<std::string> callSeq;
 	  unsigned callSeqPtr;
 	  bool getToUserMain;
@@ -199,7 +200,7 @@ namespace klee {
 
 	  std::map<llvm::Instruction*, int> curInsideFuncDisMap;
 	  std::vector<KFunction*> functions;
-	  std::map<ExecutionState*, int> stateStepMap;
+//	  std::map<ExecutionState*, int> stateStepMap;
 
 	  std::map<llvm::Function*, std::vector<llvm::Instruction*>* > cachedCallSite;
 
@@ -215,6 +216,7 @@ namespace klee {
 
 
   public:
+
 	  GeneralReplaySearcher(Executor &executor);
 	    ~GeneralReplaySearcher();
 
@@ -244,7 +246,7 @@ namespace klee {
 
 //	    void generateFuncShort();
 	    void generateNewShortDistance();
-	    void findNextTarget();
+//	    void findNextTarget();
 //	    KInstruction* findInstFromSourceLine(std::string sourceline);
 
 
@@ -276,7 +278,7 @@ namespace klee {
 
 	std::map<llvm::Instruction*, int> curInsideFuncDisMap;
 	std::vector<KFunction*> functions;
-	std::map<ExecutionState*, int> stateStepMap;
+//	std::map<ExecutionState*, int> stateStepMap;
 
 	std::map<llvm::Function*, std::vector<llvm::Instruction*>* > cachedCallSite;
 
@@ -371,7 +373,7 @@ namespace klee {
 
 	std::map<llvm::Instruction*, int> curInsideFuncDisMap;
 	std::vector<KFunction*> functions;
-	std::map<ExecutionState*, int> stateStepMap;
+//	std::map<ExecutionState*, int> stateStepMap;
 
 	std::map<llvm::Function*, std::vector<llvm::Instruction*>* > cachedCallSite;
 
@@ -415,6 +417,60 @@ namespace klee {
 
   };
 
+
+  class AssertionNonStopSearcher : public Searcher {
+	  Executor &executor;
+	  std::vector<ExecutionState*> states;
+	  std::vector<std::string> callSeq;
+	  unsigned callSeqPtr;
+	  bool getToUserMain;
+
+	  std::string sourceFile;
+	std::map<llvm::Function*,int> funcShortMap;
+	std::vector<KInstruction*> targetInstList;
+	//llvm::BasicBlock* curTargetBB;//, lastTargetBB;
+	std::map<llvm::Instruction*, int> curDistanceMap;
+
+	std::map<llvm::Instruction*, int> curInsideFuncDisMap;
+	std::vector<KFunction*> functions;
+//	std::map<ExecutionState*, int> stateStepMap;
+
+	std::map<llvm::Function*, std::vector<llvm::Instruction*>* > cachedCallSite;
+
+	void CleanCachedCallSites();
+
+	  std::set<llvm::BasicBlock*> prunedBBSet;
+	  std::set<llvm::Function*> unvisitedFunc;
+
+
+
+
+	  int lastChoiceNumber;//remember last choice so that do not need to pick state
+	  ExecutionState *lastChoice;
+
+  public:
+	AssertionNonStopSearcher(Executor &executor);
+	    ~AssertionNonStopSearcher();
+
+	    bool getTarget;
+
+	    void generateFuncShort();
+	    void generateNewShortDistance();
+	    void generateChangeDis();
+	    void findNextTarget();
+	    KInstruction* findInstFromSourceLine(std::string sourceline);
+
+
+	  ExecutionState &selectState();
+	    void update(ExecutionState *current,
+	                const std::set<ExecutionState*> &addedStates,
+	                const std::set<ExecutionState*> &removedStates);
+	    bool empty() { return states.empty(); }
+	    void printName(std::ostream &os) {
+	      os << "CallSeqReplayNonStopSearcher\n";
+	    }
+
+  };
 
   // a class used to access dominator information
   class DomInterfacePass : public llvm::FunctionPass {

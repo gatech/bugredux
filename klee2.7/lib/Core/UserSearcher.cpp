@@ -112,6 +112,9 @@ namespace {
   cl::opt<bool>
   UseCallSeqReplayNSSearch("use-call-seq-non-stop-replay");
 
+  cl::opt<bool>
+  UseAssertionNonStopSearch("use-assertion-search");
+
 }
 
 
@@ -134,7 +137,9 @@ bool klee::userSearcherRequiresBranchSequences() {
 
 Searcher *klee::constructUserSearcher(Executor &executor) {
   Searcher *searcher = 0;
-
+  if (UseAssertionNonStopSearch) {
+	  searcher = new AssertionNonStopSearcher(executor);
+  } else
   if (UseShortestPathSearch) {
 	  searcher = new ShortestPathSearcher(executor);
   } else if (UseConcretePathSearch) {

@@ -686,10 +686,10 @@ ExecutionState &CallSeqReplaySearcher::selectState() {
 			continue;
 		}
 
-		if (stateStepMap.find(es)==stateStepMap.end()) {
-			stateStepMap[es] = callSeqPtr;
-		}
-		if (stateStepMap[es] != callSeqPtr) {
+		if (es->bugReduxDepth==-1)
+			es->bugReduxDepth=callSeqPtr;
+
+		if (es->bugReduxDepth != callSeqPtr) {
 			continue;
 		}
 
@@ -900,7 +900,7 @@ ExecutionState &CallSeqReplaySearcher::selectState() {
 		if (minState->pc->inst==targetInstList[callSeqPtr]->inst){//&&(osstream.str().compare(callSeq[callSeqPtr])==0)) {
 
 				callSeqPtr++;
-				stateStepMap[minState] = callSeqPtr;
+				minState->bugReduxDepth = callSeqPtr;
 				if (callSeqPtr==targetInstList.size()) {
 					std::cerr << "reach target clear other states dump pc\n";
 					time_t nowtime = time (NULL);
@@ -935,7 +935,7 @@ ExecutionState &CallSeqReplaySearcher::selectState() {
 		for (std::vector<ExecutionState*>::iterator it = states.begin(),
 		             ie = states.end(); it != ie; ++it) {
 			ExecutionState *es = *it;
-			if (stateStepMap[es] == callSeqPtr) {
+			if (es->bugReduxDepth == callSeqPtr) {
 				btmore = false;
 				break;
 			}
@@ -949,8 +949,8 @@ ExecutionState &CallSeqReplaySearcher::selectState() {
 			for (std::vector<ExecutionState*>::iterator it = states.begin(),
 			             ie = states.end(); it != ie; ++it) {
 				ExecutionState *es = *it;
-				if (stateStepMap[es] > maxcallSeqPtr) {
-					maxcallSeqPtr = stateStepMap[es];
+				if (es->bugReduxDepth > maxcallSeqPtr) {
+					maxcallSeqPtr = es->bugReduxDepth;
 				}
 			}
 			targetInstList.erase(targetInstList.begin()+maxcallSeqPtr);
@@ -3238,10 +3238,11 @@ ExecutionState &PathReplaySearcher::selectState() {
 			continue;
 		}
 
-		if (stateStepMap.find(es)==stateStepMap.end()) {
-			stateStepMap[es] = callSeqPtr;
+
+		if (es->bugReduxDepth==-1) {
+			es->bugReduxDepth = callSeqPtr;
 		}
-		if (stateStepMap[es] != callSeqPtr) {
+		if (es->bugReduxDepth != callSeqPtr) {
 			continue;
 		}
 
@@ -3417,7 +3418,7 @@ ExecutionState &PathReplaySearcher::selectState() {
 		if (minState->pc->inst==targetInstList[callSeqPtr]->inst){//&&(osstream.str().compare(callSeq[callSeqPtr])==0)) {
 
 				callSeqPtr++;
-				stateStepMap[minState] = callSeqPtr;
+				minState->bugReduxDepth = callSeqPtr;
 				if (callSeqPtr==targetInstList.size()) {
 					std::cerr << "reach target clear other states dump pc\n";
 					getTarget = true;
@@ -3442,7 +3443,7 @@ ExecutionState &PathReplaySearcher::selectState() {
 		for (std::vector<ExecutionState*>::iterator it = states.begin(),
 		             ie = states.end(); it != ie; ++it) {
 			ExecutionState *es = *it;
-			if (stateStepMap[es] == callSeqPtr) {
+			if (es->bugReduxDepth == callSeqPtr) {
 				btmore = false;
 				break;
 			}
@@ -3456,8 +3457,8 @@ ExecutionState &PathReplaySearcher::selectState() {
 			for (std::vector<ExecutionState*>::iterator it = states.begin(),
 			             ie = states.end(); it != ie; ++it) {
 				ExecutionState *es = *it;
-				if (stateStepMap[es] > maxcallSeqPtr) {
-					maxcallSeqPtr = stateStepMap[es];
+				if (es->bugReduxDepth > maxcallSeqPtr) {
+					maxcallSeqPtr = es->bugReduxDepth;
 				}
 			}
 			targetInstList.erase(targetInstList.begin()+maxcallSeqPtr);
@@ -4705,10 +4706,10 @@ ExecutionState &CallSeqReplayNonStopSearcher::selectState() {
 			continue;
 		}
 
-		if (stateStepMap.find(es)==stateStepMap.end()) {
-			stateStepMap[es] = callSeqPtr;
+		if (es->bugReduxDepth==-1) {
+			es->bugReduxDepth = callSeqPtr;
 		}
-		if (stateStepMap[es] != callSeqPtr) {
+		if (es->bugReduxDepth != callSeqPtr) {
 			continue;
 		}
 
@@ -4915,7 +4916,7 @@ ExecutionState &CallSeqReplayNonStopSearcher::selectState() {
 		if (minState->pc->inst==targetInstList[callSeqPtr]->inst){//&&(osstream.str().compare(callSeq[callSeqPtr])==0)) {
 
 				callSeqPtr++;
-				stateStepMap[minState] = callSeqPtr;
+				minState->bugReduxDepth = callSeqPtr;
 				if (callSeqPtr==targetInstList.size()) {
 					std::cerr << "reach target clear other states dump pc\n";
 					time_t nowtime = time (NULL);
@@ -4950,7 +4951,7 @@ ExecutionState &CallSeqReplayNonStopSearcher::selectState() {
 		for (std::vector<ExecutionState*>::iterator it = states.begin(),
 		             ie = states.end(); it != ie; ++it) {
 			ExecutionState *es = *it;
-			if (stateStepMap[es] == callSeqPtr) {
+			if (es->bugReduxDepth == callSeqPtr) {
 				btmore = false;
 				break;
 			}
@@ -4964,8 +4965,8 @@ ExecutionState &CallSeqReplayNonStopSearcher::selectState() {
 			for (std::vector<ExecutionState*>::iterator it = states.begin(),
 			             ie = states.end(); it != ie; ++it) {
 				ExecutionState *es = *it;
-				if (stateStepMap[es] > maxcallSeqPtr) {
-					maxcallSeqPtr = stateStepMap[es];
+				if (es->bugReduxDepth > maxcallSeqPtr) {
+					maxcallSeqPtr = es->bugReduxDepth;
 				}
 			}
 			targetInstList.erase(targetInstList.begin()+maxcallSeqPtr);
@@ -5038,6 +5039,859 @@ void CallSeqReplayNonStopSearcher::update(ExecutionState *current,
 
 
 /////<<<< add a new search that won't stop after reaching POF >>>>>////
+
+
+/////---- add a new search that won't stop after reaching assertion -----////
+
+KInstruction* AssertionNonStopSearcher::findInstFromSourceLine(std::string sourceline) {
+
+	KInstruction* retInst = NULL;
+	for (unsigned i=0;i<functions.size();i++) {
+		KFunction* kf = functions[i];
+		int numInst = kf->numInstructions;
+		for (int j=0;j<numInst;j++) {
+			KInstruction* ki = kf->instructions[j];
+			std::ostringstream osstream;
+			osstream << ki->info->file <<":"<<ki->info->line;
+			if (osstream.str().compare(sourceline)==0) {
+
+				return ki;
+			}
+		}
+	}
+	return retInst;
+
+}
+
+void AssertionNonStopSearcher::CleanCachedCallSites() {
+	std::map<llvm::Function*, std::vector<llvm::Instruction*>* >::iterator end = cachedCallSite.end();
+	for (std::map<llvm::Function*, std::vector<llvm::Instruction*>* >::iterator it = cachedCallSite.begin();it!=end;it++){
+		std::vector<llvm::Instruction*>* vec = it->second;
+		if (vec!=NULL) {
+		vec->clear();
+		delete vec;
+		} else {
+//			std::cerr << it->first->getNameStr()<<"\n";
+		}
+	}
+
+}
+
+AssertionNonStopSearcher::AssertionNonStopSearcher(Executor &_executor)
+  : executor(_executor),
+    functions(executor.kmodule->functions){
+	for (unsigned i=0;i<functions.size();i++) {
+		KFunction * kf = functions[i];
+		if (kf->function!=NULL) {
+			funcShortMap[kf->function] = 1;
+		}
+		llvm::Function* curFunc = kf->function;
+		if (curFunc->getBasicBlockList().size()==0)
+			continue;
+		for (Function::iterator I=curFunc->begin(), E=curFunc->end();I!=E;I++) {
+			BasicBlock *BB = I;
+				for (BasicBlock::iterator BI=BB->begin(),BE=BB->end();BI!=BE;BI++) {
+					Instruction* inst = BI;
+					if (isa<CallInst>(inst)) {
+						CallInst* ci = (CallInst*) inst;
+						if (ci->getCalledFunction()!=NULL) {
+							Function *fc = ci->getCalledFunction();
+							if (cachedCallSite.find(fc)==cachedCallSite.end()) {
+								std::vector<llvm::Instruction*>* newvector = new std::vector<llvm::Instruction*>();
+								newvector->push_back(inst);
+								cachedCallSite[fc] = newvector;
+							} else {
+								std::vector<llvm::Instruction*>* oldvector = cachedCallSite[fc];
+								oldvector->push_back(inst);
+							}
+
+						}
+					}
+				}
+		}
+
+	}
+
+
+	for (unsigned i=0;i<functions.size();i++) {
+		bool found = false;
+		KFunction* kf = functions[i];
+		int numInst = kf->numInstructions;
+		for (int j=0;j<numInst;j++) {
+			KInstruction* ki = kf->instructions[j];
+			Instruction* llvmI = ki->inst;
+			if (isa<CallInst>(llvmI)) {
+				CallInst* callI = (CallInst*)llvmI;
+				if (callI->getCalledFunction()!=NULL&&callI->getCalledFunction()->getNameStr().compare("__assert_fail")==0) {
+					std::ostringstream osstream;
+					osstream << ki->info->file <<":"<<ki->info->line<<"@"<<ki->info->assemblyLine;
+					targetInstList.push_back(ki);
+					callSeq.push_back(osstream.str());
+					found = true;
+					break;
+				}
+			}
+		}
+		if (found)
+			break;
+	}
+
+	//don't load call seq trace
+
+	callSeqPtr = 0;
+	getTarget = false;
+
+
+
+
+//	std::cerr<<"build dom tree\n";
+//	llvm::PassManager pmdom;
+//	DomInterfacePass* dpass = new DomInterfacePass(NULL, &unvisitedFunc);
+//	pmdom.add((llvm::Pass*)dpass);
+//	pmdom.run(*executor.kmodule->module);
+//	prunedBBSet.insert(dpass->outputPrunedList.begin(),dpass->outputPrunedList.end());
+//
+//	std::cerr<<"filter out func number:" << unvisitedFunc.size() <<"\n";
+//	std::cerr<<"filter out BB number:" << prunedBBSet.size() <<"\n";
+
+	generateFuncShort();
+
+
+	lastChoiceNumber = -1;
+	lastChoice = NULL;
+
+	this->getToUserMain = false;
+	findNextTarget();
+
+}
+
+
+void AssertionNonStopSearcher::generateFuncShort() {
+
+	int infinity = 10000000;
+	std::set<Function*> exitfuncs;
+	for (unsigned i=0;i<functions.size();i++) {
+		KFunction * kf = functions[i];
+		if (kf->function->getNameStr().compare("__user_main")==0)
+			continue;
+		for (unsigned j=0;j<kf->numInstructions;j++) {
+			KInstruction* ki = kf->instructions[j];
+			if (isa<CallInst>(ki->inst)) {
+				CallInst* callI = (CallInst*)(ki->inst);
+				if (callI->getCalledFunction()!=NULL&&callI->getCalledFunction()->getNameStr().compare("exit")==0) {
+					exitfuncs.insert(kf->function);
+					break;
+				}
+			}
+
+		}
+		llvm::Function* curFunc = kf->function;
+	}
+	// run 5 times to get approximate short dis for func
+		for (int j=0;j<5;j++) {
+			curDistanceMap.clear();
+
+		for (unsigned i=0;i<functions.size();i++) {
+			KFunction * kf = functions[i];
+			llvm::Function* curFunc = kf->function;
+			std::set<Instruction*> q;
+			if (curFunc->getBasicBlockList().size()==0)
+				continue;
+			for (Function::iterator I=curFunc->begin(), E=curFunc->end();I!=E;I++) {
+				BasicBlock *BB = I;
+					for (BasicBlock::iterator BI=BB->begin(),BE=BB->end();BI!=BE;BI++) {
+						Instruction* inst = BI;
+						if (isa<ReturnInst>(inst)) {
+							curDistanceMap[inst] = 1;
+						} else if (isa<CallInst>(inst)){
+							CallInst* callI = (CallInst*)inst;
+							if (callI->getCalledFunction()!=NULL&&callI->getCalledFunction()->getNameStr().compare("exit")==0)
+								curDistanceMap[inst] = infinity;
+							else if (callI->getCalledFunction()!=NULL&&exitfuncs.find(callI->getCalledFunction())!=exitfuncs.end())
+								curDistanceMap[inst] = infinity;
+							else
+								curDistanceMap[inst] = infinity;
+						}
+						else {
+							curDistanceMap[inst] = infinity;
+						}
+						if (inst->isTerminator()||isa<CallInst>(inst))
+							q.insert(inst);
+					}
+			}
+
+//
+//					for (std::map<llvm::Instruction*, int>::iterator iter = curDistanceMap.begin();iter!=curDistanceMap.end();iter++) {
+//					if (iter->second==0) {
+//						iter->first->dump();
+//						std::cerr<<"initialization error!\n";
+//						}
+//					}
+
+
+			while (q.size()>0) {
+				   std::set<Instruction*>::iterator it;
+				   Instruction* minInst = NULL;
+				   int minval = infinity;
+				   for (it = q.begin();it!=q.end();it++) {
+				    	Instruction* ci = *it;
+
+				    	if (curDistanceMap[ci]<minval) {
+							minval = curDistanceMap[ci];
+							minInst = ci;
+				    	}
+				   }
+				   if (minval==infinity) {
+					   q.clear();
+					   break;
+				   }
+				   q.erase(minInst);
+
+				   std::vector<Instruction*> instvec;
+				   for (BasicBlock::iterator BI = minInst->getParent()->begin(),BE = minInst->getParent()->end();BI!=BE;BI++) {
+					   Instruction* binst = BI;
+					   if (binst==minInst)
+						   break;
+					   instvec.push_back(binst);
+				   }
+				   int newDis = infinity;
+
+				   Instruction* cminInst = minInst;
+				   while(instvec.size()>0){
+					   Instruction* backInst = instvec.back();
+					   if (isa<CallInst>(backInst)) {
+
+
+						//means prevInst is a call site to another func
+						Function* calledFunc = ((CallInst*)backInst)->getCalledFunction();
+						if (calledFunc==NULL) {
+						  	newDis = curDistanceMap[cminInst]+1;
+						} else {
+						  	if (funcShortMap.find(calledFunc)!=funcShortMap.end())
+						  		newDis = curDistanceMap[cminInst]+1+funcShortMap[calledFunc];
+						  	else
+						  		newDis = curDistanceMap[cminInst]+1;
+						  	}
+							 if (curDistanceMap[backInst]>newDis) {
+						  		 curDistanceMap[backInst] = newDis;
+//						  		 if (newDis==0) {
+//						  			 std::cerr<<"catch an error here!\n";
+//						  		 }
+						  	 }
+						 }
+					   else {
+						  	//simple case direct pred
+						    newDis = curDistanceMap[cminInst]+1;
+						  	if (curDistanceMap[backInst] > newDis) {
+						  			curDistanceMap[backInst] = newDis;
+//						  	 		 if (newDis==0) {
+//						  							  			 std::cerr<<"catch an error here3!\n";
+//						  							  		 }
+						  	}
+
+
+					   }
+					   instvec.pop_back();
+					   cminInst=backInst;
+					   q.erase(backInst);
+				   }
+
+					   //means minInst is the beginning of program
+					   pred_iterator PI = pred_begin(cminInst->getParent()), PE = pred_end(cminInst->getParent());
+					   while(PI!=PE) {
+						   BasicBlock* predBB = (BasicBlock*)(*PI);
+						   if (prunedBBSet.find(predBB)==prunedBBSet.end()) {
+						   TerminatorInst* predterm = predBB->getTerminator();
+						   newDis = curDistanceMap[cminInst]+1;
+						   if (curDistanceMap[predterm]>newDis) {
+							   curDistanceMap[predterm] = newDis;
+//							   if (newDis==0) {
+//								   std::cerr<<"catch an error here2!";
+//							   }
+						   }
+						   }
+						   PI++;
+					   }
+
+
+				}
+			if (curDistanceMap[curFunc->getEntryBlock().begin()]<infinity) {
+				funcShortMap[curFunc] = curDistanceMap[curFunc->getEntryBlock().begin()];
+		//		std::cerr <<  "dis func map for "<< curFunc->getNameStr() <<" is " <<funcShortMap[curFunc]<<"\n";
+			}
+			else {
+			//	std::cerr<<"can't get to entry of this function : "<<curFunc->getNameStr()<<"\n";
+			//	std::cerr<<"ouput func map:\n";
+			}
+		}
+		}
+
+//		std::cerr<< "start dumping curDistanceMap\n";
+//
+//		for (std::map<llvm::Instruction*, int>::iterator iter = curDistanceMap.begin();iter!=curDistanceMap.end();iter++) {
+//		if (iter->second==0) {
+//			iter->first->dump();
+//			std::cerr<<"we have error dis!\n";
+//			}
+//
+////		if (isa<CallInst>(iter->first)) {
+////			std::cerr<<"call dis : "<<iter->second<<"\n";
+////		}
+//		}
+//		for (std::map<llvm::Instruction*, int>::iterator iter = curDistanceMap.begin();iter!=curDistanceMap.end();iter++) {
+////			if (iter->first->getParent()->getParent()->getNameStr().compare("__user_main")==0) {
+//			//if (iter->second<infinity) {
+//			iter->first->dump();
+//			std::cerr<<"distance is "<<iter->second<<"\n";
+////			}
+//	//		}
+//		}
+}
+
+void AssertionNonStopSearcher::generateNewShortDistance() {
+//	this->curDistanceMap.clear();
+	this->curInsideFuncDisMap.clear();
+
+	int infinity = 10000000;
+	//std::set<BasicBlock*> s;
+	std::set<Instruction*> q;
+//	std::cerr<<callSeqPtr<<" "<<targetInstList.size()<<"\n";
+	for (unsigned i=0;i<functions.size();i++) {
+		KFunction * kf = functions[i];
+		Function* curFunc = kf->function;
+	//	if (curFunc==targetInstList[callSeqPtr]->getParent()->getParent()) {
+			for (Function::iterator I=curFunc->begin(), E=curFunc->end();I!=E;I++) {
+				BasicBlock *BB = I;
+				if (prunedBBSet.find(BB)!=prunedBBSet.end())
+					continue;
+				for (BasicBlock::iterator BI=BB->begin(),BE=BB->end();BI!=BE;BI++) {
+					Instruction* inst = BI;
+					curInsideFuncDisMap[inst] = infinity;
+					if (inst->isTerminator()) {
+						q.insert(inst);
+					}
+					if (isa<CallInst>(inst)) {
+						CallInst* calli = (CallInst*)(inst);
+						if (calli->getCalledFunction()!=NULL) {
+							if (unvisitedFunc.find(calli->getCalledFunction())==unvisitedFunc.end())
+								q.insert(inst);
+						} else
+							q.insert(inst);
+					}
+				}
+
+			}
+	//	}
+	}
+
+	std::set<Instruction*> modifiedset;
+
+	curInsideFuncDisMap[targetInstList[callSeqPtr]->inst]=0;
+	modifiedset.insert(targetInstList[callSeqPtr]->inst);
+	q.insert(targetInstList[callSeqPtr]->inst);
+	while (q.size()>0) {
+		   std::set<Instruction*>::iterator it;
+		   Instruction* minInst = NULL;
+		   int minval = infinity;
+		   if (modifiedset.size()>0) {
+		   for (it = modifiedset.begin();it!=modifiedset.end();it++) {
+		    	Instruction* cinst = *it;
+
+		    	if (curInsideFuncDisMap[cinst]<minval) {
+					minval = curInsideFuncDisMap[cinst];
+		    		minInst = cinst;
+		    	}
+		   }
+		   }
+		   if (minval==infinity){
+			   q.clear();
+			   break;
+		   }
+	//	   cerr<<"get min BB:" << minBB->getNameStr() << "\n";
+		   q.erase(minInst);
+		   modifiedset.erase(minInst);
+//		   s.insert(minBB);
+
+		   std::vector<Instruction*> instvec;
+		   for (BasicBlock::iterator BI = minInst->getParent()->begin(),BE = minInst->getParent()->end();BI!=BE;BI++) {
+			   Instruction* binst = BI;
+			   if (binst==minInst)
+				   break;
+			   instvec.push_back(binst);
+		   }
+		   int newDis = 0;
+
+		   Instruction* cminInst = minInst;
+		   while(instvec.size()>0){
+			   Instruction* backInst = instvec.back();
+			   if (isa<CallInst>(backInst)) {
+
+
+				//means prevInst is a call site to another func
+				Function* calledFunc = ((CallInst*)backInst)->getCalledFunction();
+				if (calledFunc==NULL) {
+				  	newDis = curInsideFuncDisMap[cminInst]+1;
+				} else {
+					if (unvisitedFunc.find(calledFunc)==unvisitedFunc.end()) {
+
+				  	if (funcShortMap.find(calledFunc)!=funcShortMap.end())
+				  		newDis = curInsideFuncDisMap[cminInst]+1+funcShortMap[calledFunc];
+				  	else
+				  		newDis = curInsideFuncDisMap[cminInst]+1; }
+					else
+						newDis = infinity;
+				  	}
+					 if (curInsideFuncDisMap[backInst]>newDis) {
+						 curInsideFuncDisMap[backInst] = newDis;
+				  	 }
+				 } else {
+				  	//simple case direct pred
+				    newDis = curInsideFuncDisMap[cminInst]+1;
+				  	if (curInsideFuncDisMap[backInst] > newDis) {
+				  		curInsideFuncDisMap[backInst] = newDis;
+				  	}
+
+
+			   }
+			   instvec.pop_back();
+			   cminInst=backInst;
+			  // q.erase(backInst);
+		   }
+
+		   BasicBlock* parentBB = cminInst->getParent();
+		   BasicBlock* entryBB = &(parentBB->getParent()->getEntryBlock());
+
+		   if (parentBB==entryBB) {
+		  				   std::vector<llvm::Instruction*>* vec = cachedCallSite[parentBB->getParent()];
+		  				   if (vec!=NULL) {
+		  					   for (unsigned i=0;i<vec->size();i++) {
+		  						   Instruction* calli = vec->at(i);
+		  						   if ((prunedBBSet.find(calli->getParent())==prunedBBSet.end())&&(unvisitedFunc.find(calli->getParent()->getParent())==unvisitedFunc.end())) {
+		  						   	 newDis = curInsideFuncDisMap[cminInst]+1;
+		  						   	 if (curInsideFuncDisMap[calli]>newDis) {
+		  						   		curInsideFuncDisMap[calli] = newDis;
+		  						   		modifiedset.insert(calli);
+		  						   		//std::cerr << "propagate to upper level\n";
+		  						   	 }
+		  						   }
+		  					   }
+		  				   }
+		  			   }
+
+			   //means minInst is the beginning of program
+			   pred_iterator PI = pred_begin(cminInst->getParent()), PE = pred_end(cminInst->getParent());
+			   while(PI!=PE) {
+				   BasicBlock* predBB = (BasicBlock*)(*PI);
+				   if (prunedBBSet.find(predBB)==prunedBBSet.end()) {
+				   TerminatorInst* predterm = predBB->getTerminator();
+				   newDis = curInsideFuncDisMap[cminInst]+1;
+				   if (curInsideFuncDisMap[predterm]>newDis) {
+					   curInsideFuncDisMap[predterm] = newDis;
+					   modifiedset.insert(predterm);
+				   }
+				   }
+				   PI++;
+			   }
+
+
+
+		}
+
+//	Function* curFunc = targetInstList[callSeqPtr]->inst->getParent()->getParent();
+//
+//	for (Function::iterator I=curFunc->begin(), E=curFunc->end();I!=E;I++) {
+//		BasicBlock *BB = I;
+//		std::cerr<< BB->getNameStr()<<":\n";
+//			for (BasicBlock::iterator BI=BB->begin(),BE=BB->end();BI!=BE;BI++) {
+//				Instruction* inst = BI;
+//				inst->dump();
+//				std::cerr<<"dis : "<<curInsideFuncDisMap[inst]<<"\n";
+//			}
+//	}
+
+}
+
+
+void AssertionNonStopSearcher::findNextTarget() {
+	lastChoice = NULL;
+	lastChoiceNumber = -1;
+
+	if (callSeqPtr==targetInstList.size()) {
+
+//		this->curInsideFuncDisMap.clear();
+
+//		return;
+		callSeqPtr--;
+	}
+
+	generateNewShortDistance();
+
+	return;
+
+}
+
+AssertionNonStopSearcher::~AssertionNonStopSearcher() {
+}
+
+
+ExecutionState &AssertionNonStopSearcher::selectState() {
+	ExecutionState *backes = states.back();
+	int infinity = 10000000;
+	int initenvpos = 0;
+	if (InitEnv)
+		initenvpos = 1;
+
+//	if (getToUserMain==false&&backes->pc->inst->getParent()->getParent()->getNameStr().compare("__user_main")==0) {
+//		getToUserMain = true;
+//	}
+//	if (getToUserMain==false)
+//		return *backes;
+
+	if (getTarget==true) {
+//		states.clear();
+//		CleanCachedCallSites();
+//		ExecutionState* retState = lastChoice;
+//		findNextTarget();
+		if (callSeqPtr==targetInstList.size()) {
+			callSeqPtr--;
+		}
+
+		std::cerr<<"set getTarget to false\n";
+		std::cerr<<"state size"<<states.size()<<"\n";
+		getTarget = false;
+//		return *retState;
+	}
+
+	do {
+	int minDis = infinity;
+	std::vector<ExecutionState*> potentialminState;
+	std::vector<int> potentialminVal;
+	ExecutionState* minState;
+
+	for (std::vector<ExecutionState*>::iterator it = states.begin(),
+	             ie = states.end(); it != ie; ++it) {
+		ExecutionState *es = *it;
+		int dis = infinity;
+
+		if (es->bugReduxDepth==-1)
+			es->bugReduxDepth=callSeqPtr;
+		if (es->bugReduxDepth != callSeqPtr) {
+			continue;
+		}
+
+
+
+//		if (es->pc->inst->getParent()->getParent()==targetInstList[callSeqPtr]->inst->getParent()->getParent()) {
+			//if (es->pc->info->file.compare(this->sourceFile)==0) {
+			if (this->curInsideFuncDisMap.find(es->pc->inst)!=this->curInsideFuncDisMap.end()) {
+				dis = this->curInsideFuncDisMap[es->pc->inst];
+//				std::cerr<< "dis calc by same func\n";
+//				std::cerr<< es->pc->info->file<<":"<<es->pc->info->line<<"\n";
+//				std::cerr<< dis <<"\n";
+//				std::cerr<< es->pc->inst->getParent()->getNameStr()<<"\n";
+		//		es->pc->inst->dump();
+				if (dis==0) {
+					minState = es;
+					minDis = 0;
+				} else {
+					if (dis<infinity) {
+
+				potentialminState.push_back(es);
+				potentialminVal.push_back(dis);
+				}
+				}
+			}
+		//	}
+//		}
+		if (dis==infinity) {
+
+//			std::cerr<< "dis calc in diff func : "<<es->pc->inst->getParent()->getParent()->getNameStr();
+//
+			dis = this->curDistanceMap[es->pc->inst];
+//			std::cerr<<"add dis to ret "<<dis<<"\n";
+			bool foundOnInside = false;
+
+			for (unsigned i = es->stack.size()-1;i>=initenvpos+1;i--) {
+				StackFrame sf = es->stack[i];
+				KInstruction* kinst = sf.caller;
+//				if (kinst->info->file.compare(this->sourceFile)==0) {
+					//if (kinst->inst->getParent()->getParent()==targetInstList[callSeqPtr]->getParent()->getParent()&&this->curInsideFuncDisMap[kinst->inst]<infinity) {
+				int insidedis = infinity;
+				if (this->curInsideFuncDisMap.find(kinst->inst)!=this->curInsideFuncDisMap.end())
+					insidedis = this->curInsideFuncDisMap[kinst->inst];
+				if (insidedis<infinity) {
+						dis += insidedis;
+						foundOnInside = true;
+//						std::cerr<<"add inside func to target "<<this->curInsideFuncDisMap[kinst->inst];
+						break;
+			//		}
+				} else {
+					if (i>=initenvpos+1) {
+//					std::cerr<<"add dis to ret "<<this->curDistanceMap[kinst->inst]<<"\n";
+					dis+=this->curDistanceMap[kinst->inst];
+					}
+				}
+			}
+			if (dis==0&&foundOnInside) {
+				minState = es;
+				minDis = 0;
+			} else {
+				if (dis<infinity&&foundOnInside) {
+							potentialminState.push_back(es);
+							potentialminVal.push_back(dis);
+				}
+			}
+		}
+	}
+	if (minDis>0&&potentialminVal.size()>0) {
+		ExecutionState* pminState = NULL;
+		int valLength = potentialminVal.size()-1;
+
+		if (lastChoiceNumber==valLength) {
+			for (int a=0;a<=valLength;a++) {
+				if (potentialminState[a]==lastChoice) {
+					pminState = lastChoice;
+					minDis = potentialminVal[a];
+					break;
+				}
+			}
+			if (pminState!=NULL) {
+				minState = pminState;
+			}
+		}
+
+
+		if (pminState==NULL){
+			lastChoiceNumber = valLength;
+//			minState = potentialminState[0];
+//			minDis = potentialminVal[0];
+//			int minnum =0;
+//			for (int a=1;a<=valLength;a++) {
+//				if (potentialminVal[a]<minDis) {
+//					minState = potentialminState[a];
+//					minDis = potentialminVal[a];
+//					minnum=a;
+//				}
+//			}
+//			std::cerr << "pick " << minnum << " of " << valLength << "\n";
+
+			std::map<llvm::Instruction*,int> instcounter;
+			for (int a=0;a<=valLength;a++) {
+				ExecutionState* aes = potentialminState[a];
+				if (instcounter.find(aes->pc->inst)==instcounter.end()) {
+					instcounter[aes->pc->inst] =1;
+				} else {
+					int prevV = instcounter[aes->pc->inst];
+					instcounter[aes->pc->inst]=prevV+1;
+				}
+			}
+
+	double totalVal = 0;
+	for (int a=0;a<=valLength;a++) {
+
+		totalVal+=1.00/(((double)(potentialminVal[a]))*instcounter[potentialminState[a]->pc->inst]);
+	}
+	double rng = theRNG.getDoubleL();
+	//std::cerr<<"rng : "<<rng << " potentialminVal : "<< potentialminVal.size() ;
+	double curSum = 0;
+	for (unsigned i =0;i<potentialminVal.size();i++) {
+		double curTemp = 1.00/(((double)(potentialminVal[i]))*instcounter[potentialminState[i]->pc->inst]);
+		if (curSum/totalVal<=rng&&(curSum+curTemp)/totalVal>rng) {
+			minDis = potentialminVal[i];
+			minState = potentialminState[i];
+//			std::cerr<<" picked number "<<i<<" from total state number "<<potentialminVal.size()<<"\n";
+			break;
+		}
+		double v1 = curSum/totalVal;
+		double v2 = (curSum+curTemp)/totalVal;
+//		std::cerr<<"["<<v1<<","<<v2<<"]\n";
+		curSum+=curTemp;
+	}
+	}
+	}
+
+	if (minDis<infinity) {
+		std::ostringstream osstream;
+		osstream << minState->pc->info->file <<":"<<minState->pc->info->line;
+		std::ifstream checkfile("dumpdetail");
+		if (checkfile) {
+					std::cerr << "picked " <<minState->pc->info->file<<":"<< minState->pc->info->line << " stack size" << minState->stack.size() <<" min Dis "<<minDis<<"\n";
+					std::cerr << "state number:" << states.size() <<"\n";
+					minState->pc->inst->dump();
+					std::cerr<<minState->pc->inst->getParent()->getNameStr()<<"@"<<minState->pc->inst->getParent()->getParent()->getNameStr()<<"\n";
+					std::cerr << "next target " << targetInstList[callSeqPtr]->info->file <<":"<< targetInstList[callSeqPtr]->info->line <<"@"<< targetInstList[callSeqPtr]->info->assemblyLine << "\n";
+					if (this->curInsideFuncDisMap[minState->pc->inst]<infinity) {
+						std::cerr<<"found in the same func\n";
+					} else {
+						for (unsigned i = minState->stack.size()-1;i>=initenvpos+1;i--) {
+										StackFrame sf = minState->stack[i];
+										KInstruction* kinst = sf.caller;
+						//				if (kinst->info->file.compare(this->sourceFile)==0) {
+											//if (kinst->inst->getParent()->getParent()==targetInstList[callSeqPtr]->getParent()->getParent()&&this->curInsideFuncDisMap[kinst->inst]<infinity) {
+										int insidedis = infinity;
+										if (this->curInsideFuncDisMap.find(kinst->inst)!=this->curInsideFuncDisMap.end())
+											insidedis = this->curInsideFuncDisMap[kinst->inst];
+
+										if (insidedis<infinity) {
+										//		dis += insidedis;
+												std::cerr<<"add inside func to distance "<<this->curInsideFuncDisMap[kinst->inst]<<"\n";
+												break;
+									//		}
+										} else {
+											if (i>=initenvpos+1) {
+											std::cerr<<"add dis to ret "<<this->curDistanceMap[kinst->inst]<<"\n";
+											kinst->inst->dump();
+											//dis+=this->curDistanceMap[kinst->inst];
+											}
+										}
+									}
+
+//						if (minState->stack.size()>=2) {
+//							std::cerr << "caller stack " <<minState->stack[minState->stack.size()-2].caller->info->file<<":"<< minState->stack[minState->stack.size()-2].caller->info->line << "@" << minState->stack[minState->stack.size()-2].caller->info->assemblyLine<<"\n";
+//							if (this->curInsideFuncDisMap[minState->stack[minState->stack.size()-2].caller->inst]<infinity) {
+//								std::cerr<< "caller stack is in the func and dis: "<< this->curInsideFuncDisMap[minState->stack[minState->stack.size()-2].caller->inst];
+//							}
+//						}
+					}
+					std::cerr<< "------------------\n";
+
+		}
+//		if (minDis==0) {
+//			std::cerr<<"**min dis is 0 dumping inst\n";
+//			std::cerr<<"searching inst : ";
+//			minState->pc->inst->dump();
+//			std::cerr<<"target inst : ";
+//			targetInstList[callSeqPtr]->dump();
+//		}
+
+		if (minState->pc->inst==targetInstList[callSeqPtr]->inst){//&&(osstream.str().compare(callSeq[callSeqPtr])==0)) {
+
+				callSeqPtr++;
+				minState->bugReduxDepth = callSeqPtr;
+				std::cerr<<"terminate addr:"<<minState<<"\n";
+
+				if (callSeqPtr==targetInstList.size()) {
+					std::cerr << "reach target clear other states dump pc\n";
+					time_t nowtime = time (NULL);
+					char buf[256];
+					strftime(buf, sizeof(buf), "Get At: %Y-%m-%d %H:%M:%S\n", localtime(&nowtime));
+					std::cerr << buf ;
+
+					getTarget = true;
+//					states.clear();
+				} else {
+					std::cerr << callSeqPtr <<" "<<targetInstList.size()<< " reach partial important move step forward\n";
+				//	std::cerr << "Cur PC : "<< minState->pc->info->file<<":"<<minState->pc->info->line<<"@"<<minState->pc->info->assemblyLine <<"\n";
+					time_t nowtime = time (NULL);
+					char buf[256];
+					strftime(buf, sizeof(buf), "Get At: %Y-%m-%d %H:%M:%S\n", localtime(&nowtime));
+					std::cerr << buf ;
+					std::cerr << "Next target : "<< targetInstList[callSeqPtr]->info->file<<":"<<targetInstList[callSeqPtr]->info->line<<"@"<<targetInstList[callSeqPtr]->info->assemblyLine <<"\n";
+					std::cerr << "Opcode : " << targetInstList[callSeqPtr]->inst->getOpcodeName() <<"\n";
+					findNextTarget();
+			}
+		}
+		lastChoice = minState;
+
+		return *minState;
+	} else {
+		if (callSeqPtr==0)
+			break;
+		callSeqPtr--;
+		bool btmore = true;
+		while (btmore) {
+//			int numnotstep = 0;
+		for (std::vector<ExecutionState*>::iterator it = states.begin(),
+		             ie = states.end(); it != ie; ++it) {
+			ExecutionState *es = *it;
+			if (es->bugReduxDepth == callSeqPtr) {
+				btmore = false;
+				break;
+			}
+		}
+		if (btmore==false) {
+			break;
+		}
+		if (callSeqPtr==0) {
+			//lets try to remove the top one target so that we can move step further
+			int maxcallSeqPtr = -1;
+			for (std::vector<ExecutionState*>::iterator it = states.begin(),
+			             ie = states.end(); it != ie; ++it) {
+				ExecutionState *es = *it;
+				if (es->bugReduxDepth > maxcallSeqPtr) {
+					maxcallSeqPtr = es->bugReduxDepth;
+				}
+			}
+			targetInstList.erase(targetInstList.begin()+maxcallSeqPtr);
+			std::cerr<< "remove target " <<maxcallSeqPtr<<" from target list\n";
+			callSeqPtr = maxcallSeqPtr;
+			break;
+
+
+		}
+		callSeqPtr--;
+
+		};
+
+		std::cerr << callSeqPtr <<" "<<targetInstList.size()<< " have to perform backtracing move step back\n";
+		std::cerr << "Next target : "<< targetInstList[callSeqPtr]->info->file<<":"<<targetInstList[callSeqPtr]->info->line<<"@"<<targetInstList[callSeqPtr]->info->assemblyLine << "#" << targetInstList[callSeqPtr]->inst->getParent()->getParent()->getNameStr()<<"\n";
+
+		if (states.size()==1) {
+			std::cerr<<"Cur PC : " << states.back()->pc->info->file<<":" <<states.back()->pc->info->line<<"@"<<states.back()->pc->info->assemblyLine<<"#"<<states.back()->pc->inst->getParent()->getParent()->getNameStr()<<"\n";
+		}
+
+		if (callSeqPtr==targetInstList.size())
+			break;
+			findNextTarget();
+		}
+	} while (true);
+		//clear states
+		std::cerr<<"min Dis is infinite, we can't find feasible path.\n Now terminating program \n";
+		ExecutionState* retVal = NULL;
+		for (std::vector<ExecutionState*>::iterator it = states.begin(),
+		             ie = states.end(); it != ie; ++it) {
+			ExecutionState *es = *it;
+	//		Instruction* nextInst = es->pc->inst;
+		//	if (nextInst==targetInstList[callSeqPtr]) {
+				retVal = es;
+				break;
+		//	}
+		}
+		CleanCachedCallSites();
+		states.clear();
+		return *retVal;
+}
+
+void AssertionNonStopSearcher::update(ExecutionState *current,
+                         const std::set<ExecutionState*> &addedStates,
+                         const std::set<ExecutionState*> &removedStates) {
+  states.insert(states.end(),
+                addedStates.begin(),
+                addedStates.end());
+  for (std::set<ExecutionState*>::const_iterator it = removedStates.begin(),
+         ie = removedStates.end(); it != ie; ++it) {
+    ExecutionState *es = *it;
+    if (es == states.back()) {
+      states.pop_back();
+    } else {
+      bool ok = false;
+
+      for (std::vector<ExecutionState*>::iterator ait = states.begin(),
+             aie = states.end(); ait != aie; ++ait) {
+        if (es==*ait) {
+          states.erase(ait);
+          ok = true;
+          break;
+        }
+      }
+
+      assert(ok && "invalid state removed");
+    }
+  }
+}
+
+
+/////<<<< add a new search that won't stop after reaching assertion >>>>>////
 
 /// this searcher is used for calculating the common branch dependency information ////
 

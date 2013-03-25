@@ -71,6 +71,9 @@ private:
   std::map< std::string, std::string > fnAliases;
 
 public:
+
+  int bugReduxDepth;
+
   bool fakeState;
   // Are we currently underconstrained?  Hack: value is size to make fake
   // objects.
@@ -110,7 +113,7 @@ public:
   void removeFnAlias(std::string fn);
   
 private:
-  ExecutionState() : fakeState(false), underConstrained(0), ptreeNode(0) {}
+  ExecutionState() : fakeState(false), underConstrained(0), ptreeNode(0), bugReduxDepth(-1) {}
 
 public:
   ExecutionState(KFunction *kf);
